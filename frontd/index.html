@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LP MUSIC - Baixe suas músicas favoritas</title>
+   <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <h1 class="logo">
+          <i class="fas fa-music"></i> LP MUSIC
+        </h1>
+        <button id="favoritesBtn" class="favorites-header-btn">
+          <i class="fas fa-heart"></i>
+          <span>Favoritas</span>
+          <span id="favoritesCount" class="favorites-count">0</span>
+        </button>
+      </div>
+      <p class="tagline">Baixe suas músicas favoritas do YouTube</p>
+    </div>
+  </header>
+
+  <!-- Search Section -->
+  <section class="search-section">
+    <div class="container">
+      <div class="search-box">
+        <input 
+          type="text" 
+          id="searchInput" 
+          class="search-input" 
+          placeholder="Pesquisar músicas, artistas, álbuns..."
+          autocomplete="off"
+        >
+        <button id="searchBtn" class="search-btn">
+          <i class="fas fa-search"></i> Pesquisar
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Videos Grid -->
+  <section class="videos-section">
+    <div class="container">
+      <h2 id="sectionTitle" class="section-title">🔥 Músicas em Alta no Brasil</h2>
+      <div id="loadingSpinner" class="loading-spinner" style="display: none;">
+        <i class="fas fa-spinner fa-spin"></i> Carregando...
+      </div>
+      <div id="videosGrid" class="videos-grid"></div>
+      <div id="errorMessage" class="error-message" style="display: none;"></div>
+      
+      <!-- Pagination -->
+      <div id="paginationContainer" class="pagination-container" style="display: none;">
+        <button id="prevPage" class="pagination-btn">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <div id="paginationNumbers" class="pagination-numbers"></div>
+        <button id="nextPage" class="pagination-btn">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Floating Video Player (Picture-in-Picture) -->
+  <div id="floatingPlayer" class="floating-player" style="display: none;">
+    <div class="floating-player-header">
+      <h4 id="floatingPlayerTitle" class="floating-player-title"></h4>
+      <div class="floating-player-controls">
+        <button id="minimizePlayer" class="player-control-btn" title="Minimizar">
+          <i class="fas fa-minus"></i>
+        </button>
+        <button id="closePlayer" class="player-control-btn" title="Fechar">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+    <div id="floatingPlayerContainer" class="floating-player-container"></div>
+  </div>
+
+  <!-- Download Modal -->
+  <div id="downloadModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h3 class="modal-title">Escolha o formato de download</h3>
+      <div class="modal-body">
+        <p id="modalVideoTitle" class="modal-video-title"></p>
+        <div class="download-options">
+          <button class="download-option-btn" data-type="video">
+            <i class="fas fa-video"></i>
+            <span>Vídeo (MP4)</span>
+          </button>
+          <button class="download-option-btn" data-type="audio">
+            <i class="fas fa-headphones"></i>
+            <span>Áudio (MP3)</span>
+          </button>
+        </div>
+        <button id="confirmDownloadBtn" class="confirm-btn" style="display: none;">
+          <i class="fas fa-download"></i> Confirmar Download
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Progress Modal -->
+  <div id="progressModal" class="modal">
+    <div class="modal-content progress-modal">
+      <h3 class="modal-title">
+        <i class="fas fa-file-download"></i> Download em andamento
+      </h3>
+      <div class="modal-body">
+        <div id="progressStatus" class="progress-status">Iniciando download...</div>
+        <div class="progress-bar-container">
+          <div id="progressBar" class="progress-bar"></div>
+        </div>
+        <div id="progressPercent" class="progress-percent">0%</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
